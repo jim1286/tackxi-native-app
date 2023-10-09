@@ -6,7 +6,7 @@ server:
 db:
   type: 'postgres'
   port: 5432
-  database: 'velog-app'
+  database: 'tackxi-app'
 
 jwt:
   accessExpiresIn: 10800
