@@ -1,0 +1,13 @@
+server:
+  port: 8000
+  baseURL: 'http://localhost'
+  path: 'uploads'
+
+db:
+  type: 'postgres'
+  port: 5432
+  database: 'velog-app'
+
+jwt:
+  accessExpiresIn: 10800
+  refreshExpiresIn: 3600
