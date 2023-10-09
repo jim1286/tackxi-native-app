@@ -1,4 +1,6 @@
-export * as ApiService from './api.service';
-export * as TokenService from './token.service';
-export * as LocalService from './local.service';
-export * as AuthService from './auth.service';
+import * as ApiService from './api.service';
+import * as TokenService from './token.service';
+import * as LocalService from './local.service';
+import * as AuthService from './auth.service';
+
+export {ApiService, TokenService, LocalService, AuthService};

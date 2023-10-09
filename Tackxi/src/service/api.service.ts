@@ -1,24 +1,12 @@
-import {ApiResponse} from '../interface';
-import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
+import axios, {AxiosRequestConfig} from 'axios';
 import {TokenService} from '.';
-
-const responseSuccessHandler = (
-  response: AxiosResponse<any>,
-): AxiosResponse | Promise<AxiosResponse> => {
-  return response;
-};
-
-const responseErrorHandler = async (error: any): Promise<any> => {
-  const {response} = error;
-
-  return Promise.reject(response);
-};
+import {ApiResponse} from '../interface';
+import {API_BASE_URL} from '@env';
 
 const api = axios.create({
+  baseURL: 'http://localhost:8000',
   timeout: 1000 * 15,
 });
-
-api.interceptors.response.use(responseSuccessHandler, responseErrorHandler);
 
 export const get = async (
   url: string,
@@ -32,9 +20,9 @@ export const get = async (
     configs.timeout = timeout;
   }
 
-  const response: ApiResponse = await api.get(url, configs);
+  const res: ApiResponse = await api.get(url, configs);
 
-  return response;
+  return res;
 };
 
 export const post = async (
@@ -56,28 +44,21 @@ export const post = async (
     });
   }
 
-  const response: ApiResponse = await api.post(url, data, configs);
+  const res: ApiResponse = await api.post(url, data, configs);
 
-  return response;
+  return res;
 };
 
 export const put = async (
   url: string,
   data: any,
-  customHeader: any = {},
-  secure = true,
+  secure: boolean = true,
   timeout?: number,
 ): Promise<ApiResponse> => {
-  const configs: any = await getConfig(secure);
+  const configs: AxiosRequestConfig = await getConfig(secure);
 
   if (timeout) {
     configs.timeout = timeout;
-  }
-
-  if (customHeader) {
-    Object.keys(customHeader).forEach(key => {
-      configs[key] = customHeader[key];
-    });
   }
 
   const response: ApiResponse = await api.put(url, data, configs);
@@ -118,7 +99,7 @@ const getConfig = async (
   secure: boolean,
   params: any = null,
 ): Promise<AxiosRequestConfig> =>
-  new Promise((resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     const config: AxiosRequestConfig = {};
 
     try {
@@ -128,7 +109,7 @@ const getConfig = async (
 
       if (secure) {
         try {
-          const tokens = TokenService.getTokens();
+          const tokens = await TokenService.getTokens();
           const accessToken = tokens?.accessToken;
 
           if (accessToken) {

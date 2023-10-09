@@ -2,11 +2,9 @@ import {
   BaseEntity,
   Column,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
-import { Board, Comment } from '.';
 
 @Entity()
 @Unique(['userId'])
@@ -22,10 +20,4 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
-
-  @OneToMany(() => Board, (board) => board.user)
-  boardList: Board[];
-
-  @OneToMany(() => Comment, (comment) => comment.user)
-  commentList: Comment[];
 }
