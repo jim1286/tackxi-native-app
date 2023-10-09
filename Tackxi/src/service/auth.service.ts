@@ -1,6 +1,5 @@
-import {ApiResponse} from '../interface';
+import {ApiResponse, SignInRequest, SignInResponse} from '../interface';
 import {ApiService} from '.';
-import {SignInRequest, SignInResponse} from '../interface/http';
 
 const AUTH_BASE_URI = `/auth`;
 

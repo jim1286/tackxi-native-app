@@ -5,8 +5,8 @@ server:
 
 db:
   type: 'postgres'
-  port: 5432
-  database: 'tackxi-app'
+  port: 8080
+  database: 'tackxi-server'
 
 jwt:
   accessExpiresIn: 10800
