@@ -27,7 +27,6 @@ export class AuthService {
 
   async signUp(signUpDto: UserDto.SignUpDto) {
     const { name, userId, password } = signUpDto;
-
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -50,7 +49,6 @@ export class AuthService {
 
   async signIn(signInDto: UserDto.SignInDto): Promise<AuthResponse.SignIn> {
     const { userId, password } = signInDto;
-
     const user = await this.findOneByUserId(userId);
 
     if (!user) {
@@ -99,12 +97,14 @@ export class AuthService {
 
   async getAccessToken(payload: TokenPayload): Promise<string> {
     return this.jwtService.sign(payload, {
+      secret: jwtConfig.accessSecret,
       expiresIn: jwtConfig.accessExpiresIn,
     });
   }
 
   async getRefreshToken(payload: TokenPayload): Promise<string> {
     return this.jwtService.sign(payload, {
+      secret: jwtConfig.refreshSecret,
       expiresIn: jwtConfig.refreshExpiresIn,
     });
   }

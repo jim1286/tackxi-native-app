@@ -9,12 +9,11 @@ import * as config from 'config';
 import { AccessTokenStrategy } from '@/strategy';
 
 const jwtConfig = config.get('jwt');
-
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secret: process.env.JWT_SECRET || jwtConfig.secret,
+      secret: process.env.JWT_SECRET || jwtConfig.accessSecret,
       signOptions: {
         expiresIn: jwtConfig.expiresIn,
       },

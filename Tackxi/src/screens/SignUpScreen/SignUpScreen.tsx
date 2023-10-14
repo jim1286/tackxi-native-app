@@ -4,12 +4,14 @@ import {TextInput, View} from 'react-native';
 import {styled} from './styles';
 import {SignUpInfo} from '../../interface';
 import {AuthService} from '../../service';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {AuthStackParamList} from '../../navigator/Stacks/AuthStack/AuthStack';
 
-interface SignUpScreenProps {
-  navigation: any;
-}
+const SignUpScreen: React.FC = () => {
+  const authNavigation =
+    useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
 
-const SignUpScreen: React.FC<SignUpScreenProps> = ({navigation}) => {
   const [userInfo, setUserInfo] = useState<SignUpInfo>({
     name: '',
     userId: '',
@@ -23,7 +25,7 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({navigation}) => {
 
     try {
       await AuthService.signUp(userInfo);
-      navigation.navigate('login');
+      authNavigation.navigate('login');
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +62,7 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({navigation}) => {
             name="back"
             size={30}
             style={styled.icon}
-            onPress={() => navigation.navigate('login')}
+            onPress={() => authNavigation.navigate('login')}
           />
           <IconContainer
             name="adduser"

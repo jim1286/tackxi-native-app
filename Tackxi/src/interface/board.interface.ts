@@ -1,6 +1,4 @@
-export interface Board {
+export interface Transportation {
   id: string;
-  title: string;
-  description: string;
-  author: string;
+  name: string;
 }

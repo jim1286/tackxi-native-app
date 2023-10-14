@@ -6,18 +6,23 @@ export const styled = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  addBoard: {
-    width: '70%',
-    height: ' 50%',
+  icon: {
+    width: 250,
+    height: 250,
+    borderWidth: 1,
+    borderRadius: 10,
+    gap: 15,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'column',
+  },
+  iconWrap: {
+    gap: 15,
+    display: 'flex',
     flexDirection: 'row',
   },
-  board: {
-    width: '80%',
-    height: 30,
-    borderWidth: 1,
-    marginRight: 5,
+  iconStyle: {
+    backgroundColor: 'skyblue',
   },
 });

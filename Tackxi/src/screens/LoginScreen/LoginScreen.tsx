@@ -4,12 +4,16 @@ import {TextInput, View} from 'react-native';
 import {styled} from './styles';
 import {SignInInfo} from '../../interface';
 import {AuthService, TokenService} from '../../service';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {AppStackParamList} from '../../navigator/AppStack';
+import {AuthStackParamList} from '../../navigator/Stacks/AuthStack/AuthStack';
 
-interface LoginScreenProps {
-  navigation: any;
-}
-
-const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
+const LoginScreen: React.FC = () => {
+  const appNavigation =
+    useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+  const authNavigation =
+    useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
   const [userInfo, setUserInfo] = useState<SignInInfo>({
     userId: '',
     password: '',
@@ -22,10 +26,11 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
 
     try {
       const token = await AuthService.signIn(userInfo);
-      TokenService.setTokens(token);
+      await TokenService.setTokens(token);
 
-      navigation('boardStack');
+      appNavigation.navigate('transportationStack');
     } catch (error) {
+      await TokenService.removeToken();
       console.log(error);
     }
   };
@@ -60,7 +65,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
             name="adduser"
             size={30}
             style={styled.icon}
-            onPress={() => navigation.navigate('signUp')}
+            onPress={() => authNavigation.navigate('signUp')}
           />
         </View>
       </View>
