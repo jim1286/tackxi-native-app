@@ -1,9 +1,0 @@
-db:
-  host: 'localhost'
-  username: 'postgres'
-  password: 'postgres'
-  synchronize: true
-
-jwt:
-  accessSecret: 'access1234'
-  refreshSecret: 'refresh1234'
