@@ -8,29 +8,34 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AppStackParamList} from '../../navigator/AppStack';
 import {AuthStackParamList} from '../../navigator/Stacks/AuthStack/AuthStack';
+import UserStore from '../../stores/UserStore/UserStore';
 
 const LoginScreen: React.FC = () => {
+  const {setUser, deleteUser} = UserStore();
   const appNavigation =
     useNavigation<NativeStackNavigationProp<AppStackParamList>>();
   const authNavigation =
     useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
   const [userInfo, setUserInfo] = useState<SignInInfo>({
-    userId: '',
+    userName: '',
     password: '',
   });
 
   const handleSignIn = async () => {
-    if (!userInfo.userId || !userInfo.password) {
+    if (!userInfo.userName || !userInfo.password) {
       return;
     }
 
     try {
       const token = await AuthService.signIn(userInfo);
       await TokenService.setTokens(token);
+      // const user = await AuthService.getUser();
+      // setUser(user);
 
-      appNavigation.navigate('transportationStack');
+      appNavigation.navigate('routeStack');
     } catch (error) {
       await TokenService.removeToken();
+      deleteUser();
       console.log(error);
     }
   };
@@ -43,7 +48,7 @@ const LoginScreen: React.FC = () => {
             style={styled.id}
             placeholder="  id"
             onChangeText={e => {
-              setUserInfo(prev => ({...prev, userId: e}));
+              setUserInfo(prev => ({...prev, userName: e}));
             }}
           />
           <TextInput

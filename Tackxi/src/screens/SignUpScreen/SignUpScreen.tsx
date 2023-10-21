@@ -14,12 +14,12 @@ const SignUpScreen: React.FC = () => {
 
   const [userInfo, setUserInfo] = useState<SignUpInfo>({
     name: '',
-    userId: '',
+    userName: '',
     password: '',
   });
 
   const handleSignUp = async () => {
-    if (!userInfo.name || !userInfo.userId || !userInfo.password) {
+    if (!userInfo.name || !userInfo.userName || !userInfo.password) {
       return;
     }
 
@@ -46,7 +46,7 @@ const SignUpScreen: React.FC = () => {
             style={styled.id}
             placeholder="  id"
             onChangeText={e => {
-              setUserInfo(prev => ({...prev, userId: e}));
+              setUserInfo(prev => ({...prev, userName: e}));
             }}
           />
           <TextInput

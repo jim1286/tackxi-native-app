@@ -6,7 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '@/entity';
 import * as config from 'config';
-import { AccessTokenStrategy } from '@/strategy';
+import { JwtStrategy } from '@/strategy';
 
 const jwtConfig = config.get('jwt');
 @Module({
@@ -15,13 +15,13 @@ const jwtConfig = config.get('jwt');
     JwtModule.register({
       secret: process.env.JWT_SECRET || jwtConfig.accessSecret,
       signOptions: {
-        expiresIn: jwtConfig.expiresIn,
+        expiresIn: jwtConfig.accessExpiresIn,
       },
     }),
     TypeOrmModule.forFeature([User]),
   ],
   controllers: [AuthController],
-  providers: [AuthService, AccessTokenStrategy],
-  exports: [AccessTokenStrategy, PassportModule, AuthService],
+  providers: [AuthService, JwtStrategy],
+  exports: [JwtStrategy, PassportModule, AuthService],
 })
 export class AuthModule {}

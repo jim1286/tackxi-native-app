@@ -6,6 +6,7 @@ import {TransportationStore} from '../../stores';
 import {Transportation} from '../../interface';
 import 'react-native-get-random-values';
 import {v4 as uuid} from 'uuid';
+import {nanoid} from 'nanoid';
 
 const TransportationScreen = () => {
   const {transportationList, addTransportation, deleteTransportation} =
@@ -70,7 +71,7 @@ const TransportationScreen = () => {
       </View>
       {transportationList.map(transportation => (
         <View>
-          <Text>{transportation.name}</Text>
+          <Text key={nanoid()}>{transportation.name}</Text>
         </View>
       ))}
     </BaseView>
