@@ -2,16 +2,17 @@ import {StyleSheet} from 'react-native';
 
 export const styled = StyleSheet.create({
   container: {
-    height: 200,
+    height: 295,
   },
   body: {
-    height: 195,
+    height: 280,
   },
   bodyHeader: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
+    justifyContent: 'center',
     padding: 15,
-    height: 65,
+    height: 120,
   },
   textWrap: {
     display: 'flex',
@@ -21,10 +22,18 @@ export const styled = StyleSheet.create({
     gap: 10,
     width: '100%',
   },
+  routeWrap: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: '100%',
+    height: 50,
+  },
   route: {
     display: 'flex',
     flexDirection: 'column',
-    height: 130,
+    height: 160,
   },
   rowDivider: {
     height: '50%',

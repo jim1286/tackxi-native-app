@@ -54,7 +54,7 @@ const AppStack: React.FC = () => {
 
   return (
     <Navigator
-      initialRouteName="authStack"
+      initialRouteName="routeStack"
       screenOptions={{headerShown: false}}>
       <Screen name="authStack" component={AuthStack} />
       <Screen name="transportationStack" component={TransportationStack} />

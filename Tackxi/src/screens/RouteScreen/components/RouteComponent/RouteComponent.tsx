@@ -14,17 +14,22 @@ const RouteComponent: React.FC<RouteComponentProps> = ({info}) => {
       <View style={styled.body}>
         <View style={styled.bodyHeader}>
           <View style={styled.textWrap}>
-            <Text>{info.summary.savedMoney}원</Text>
+            <Text>{info.summary.taxiFare}원</Text>
             <View style={[styled.rowDivider]} />
-            <Text>{Math.floor(info.summary.savedTime / 60)}분</Text>
+            <Text>{Math.floor(info.summary.wastedTime / 60)}분</Text>
+          </View>
+          <View style={styled.routeWrap}>
+            {info.steps.map(step => (
+              <StepComponent
+                key={step.mode}
+                step={step}
+                wastedTime={info.summary.wastedTime}
+              />
+            ))}
           </View>
         </View>
         <View style={[styled.columnDivider, {height: 3}]} />
-        <View style={styled.route}>
-          {info.steps.map(step => (
-            <StepComponent key={step.mode} step={step} />
-          ))}
-        </View>
+        <View style={styled.route}></View>
       </View>
       <View style={styled.columnDivider} />
     </View>
