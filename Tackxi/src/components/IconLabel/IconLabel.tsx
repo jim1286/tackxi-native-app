@@ -5,13 +5,19 @@ import {ModeEnum} from '../../enums';
 import Bus from '../../assets/Bus.svg';
 import Taxi from '../../assets/Taxi.svg';
 import Walk from '../../assets/Walk.svg';
+import Location from '../../assets/Location.svg';
 
 interface IconLabelProps {
-  iconColor: string;
   iconType: ModeEnum;
+  iconColor?: string;
+  labelColor?: string;
 }
 
-const IconLabel: React.FC<IconLabelProps> = ({iconColor, iconType}) => {
+const IconLabel: React.FC<IconLabelProps> = ({
+  iconType,
+  iconColor,
+  labelColor,
+}) => {
   const icon = useMemo(() => {
     switch (iconType) {
       case ModeEnum.BUS: {
@@ -23,10 +29,17 @@ const IconLabel: React.FC<IconLabelProps> = ({iconColor, iconType}) => {
       case ModeEnum.WALK: {
         return <Walk />;
       }
+      case ModeEnum.LOCATION: {
+        return <Location />;
+      }
     }
   }, [iconType]);
 
-  return <View style={styled(iconColor).label}>{icon}</View>;
+  return (
+    <View style={styled(labelColor).label}>
+      {React.cloneElement(icon, {fill: iconColor})}
+    </View>
+  );
 };
 
 export default IconLabel;

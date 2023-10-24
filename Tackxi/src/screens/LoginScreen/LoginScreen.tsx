@@ -46,14 +46,14 @@ const LoginScreen: React.FC = () => {
         <View style={styled.input}>
           <TextInput
             style={styled.id}
-            placeholder="  id"
+            placeholder="id"
             onChangeText={e => {
               setUserInfo(prev => ({...prev, userName: e}));
             }}
           />
           <TextInput
             style={styled.pw}
-            placeholder="  password"
+            placeholder="password"
             onChangeText={e => {
               setUserInfo(prev => ({...prev, password: e}));
             }}

@@ -1,8 +1,9 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import {IconLabel} from '../../../../../../../../components';
 import {ModeEnum} from '../../../../../../../../enums';
 import {Text, View} from 'react-native';
 import {styled} from './styles';
+import {TimeUtil} from '../../../../../../../../utils';
 
 interface TaxiModeProps {
   percent: number;
@@ -10,16 +11,12 @@ interface TaxiModeProps {
 }
 
 const TaxiMode: React.FC<TaxiModeProps> = ({percent, sectionTime}) => {
-  const minute = useMemo(() => {
-    return Math.floor(sectionTime / 60);
-  }, [sectionTime]);
-
   return (
     <View style={styled(percent).bar}>
-      <IconLabel iconColor="#f57c2c" iconType={ModeEnum.TAXI} />
-      {minute > 0 && (
-        <Text style={{fontSize: 12, color: 'white'}}>{minute}분</Text>
-      )}
+      <IconLabel labelColor="#f57c2c" iconType={ModeEnum.TAXI} />
+      <Text style={{fontSize: 12, color: 'white'}}>
+        {TimeUtil.setSecondToMinute(sectionTime)}분
+      </Text>
     </View>
   );
 };

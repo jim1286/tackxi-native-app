@@ -1,14 +1,14 @@
 import React from 'react';
 import {BaseView} from '../../components';
 import {styled} from './styles';
-import {ScrollView, View} from 'react-native';
+import {ScrollView} from 'react-native';
 import {mock} from './mock';
-import {RouteComponent} from './components';
+import {HeaderComponent, RouteComponent} from './components';
 
 const RouteScreen: React.FC = () => {
   return (
     <BaseView>
-      <View style={styled.header}></View>
+      <HeaderComponent />
       <ScrollView style={styled.body}>
         {mock.infoList.map((info, index) => (
           <RouteComponent key={index} info={info} />

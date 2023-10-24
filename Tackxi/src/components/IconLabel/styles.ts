@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const styled = (iconColor: string) =>
+export const styled = (iconColor?: string) =>
   StyleSheet.create({
     label: {
       width: 25,

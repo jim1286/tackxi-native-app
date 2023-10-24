@@ -2,19 +2,35 @@ import {StyleSheet} from 'react-native';
 
 export const styled = StyleSheet.create({
   container: {
-    height: 295,
+    height: 365,
+    backgroundColor: 'white',
   },
   body: {
-    height: 280,
+    height: 360,
   },
-  bodyHeader: {
+  simpleRoute: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     padding: 15,
-    height: 120,
+    height: 110,
   },
-  textWrap: {
+  infoWrap: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: 50,
+    width: '100%',
+  },
+  saveInfo: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 20,
+    gap: 5,
+    width: '100%',
+  },
+  routeInfo: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -22,18 +38,20 @@ export const styled = StyleSheet.create({
     gap: 10,
     width: '100%',
   },
-  routeWrap: {
+  simpleWrap: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
     maxWidth: '100%',
-    height: 50,
+    height: 40,
   },
-  route: {
+  detailRoute: {
     display: 'flex',
     flexDirection: 'column',
-    height: 160,
+    justifyContent: 'center',
+    height: 250,
+    padding: 15,
   },
   rowDivider: {
     height: '50%',
@@ -41,7 +59,7 @@ export const styled = StyleSheet.create({
     backgroundColor: '#d3d3d3',
   },
   columnDivider: {
-    height: 5,
+    height: 3,
     backgroundColor: '#d3d3d3',
   },
 });

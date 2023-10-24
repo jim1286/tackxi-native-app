@@ -1,1 +1,2 @@
-export * from './StepComponent';
+export * from './SimpleStep';
+export * from './DetailStep';
