@@ -4,28 +4,38 @@ import {TextInput, View} from 'react-native';
 import {styled} from './styles';
 import {SignInInfo} from '../../interface';
 import {AuthService, TokenService} from '../../service';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {AppStackParamList} from '../../navigator/AppStack';
+import {AuthStackParamList} from '../../navigator/Stacks/AuthStack/AuthStack';
+import UserStore from '../../stores/UserStore/UserStore';
 
-interface LoginScreenProps {
-  navigation: any;
-}
-
-const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
+const LoginScreen: React.FC = () => {
+  const {setUser, deleteUser} = UserStore();
+  const appNavigation =
+    useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+  const authNavigation =
+    useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
   const [userInfo, setUserInfo] = useState<SignInInfo>({
-    userId: '',
+    userName: '',
     password: '',
   });
 
   const handleSignIn = async () => {
-    if (!userInfo.userId || !userInfo.password) {
+    if (!userInfo.userName || !userInfo.password) {
       return;
     }
 
     try {
       const token = await AuthService.signIn(userInfo);
-      TokenService.setTokens(token);
+      await TokenService.setTokens(token);
+      // const user = await AuthService.getUser();
+      // setUser(user);
 
-      navigation('boardStack');
+      appNavigation.navigate('routeStack');
     } catch (error) {
+      await TokenService.removeToken();
+      deleteUser();
       console.log(error);
     }
   };
@@ -36,14 +46,14 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
         <View style={styled.input}>
           <TextInput
             style={styled.id}
-            placeholder="  id"
+            placeholder="id"
             onChangeText={e => {
-              setUserInfo(prev => ({...prev, userId: e}));
+              setUserInfo(prev => ({...prev, userName: e}));
             }}
           />
           <TextInput
             style={styled.pw}
-            placeholder="  password"
+            placeholder="password"
             onChangeText={e => {
               setUserInfo(prev => ({...prev, password: e}));
             }}
@@ -60,7 +70,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
             name="adduser"
             size={30}
             style={styled.icon}
-            onPress={() => navigation.navigate('signUp')}
+            onPress={() => authNavigation.navigate('signUp')}
           />
         </View>
       </View>

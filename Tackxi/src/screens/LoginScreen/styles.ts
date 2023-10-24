@@ -27,12 +27,14 @@ export const styled = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 2,
     marginBottom: 4,
+    padding: 5,
   },
   pw: {
     width: '70%',
     height: 30,
     borderWidth: 1,
     borderRadius: 2,
+    padding: 5,
   },
   button: {
     width: '100%',

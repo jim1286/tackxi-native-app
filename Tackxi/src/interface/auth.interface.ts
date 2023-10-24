@@ -4,12 +4,12 @@ export interface JwtTokens {
 }
 
 export interface SignInInfo {
-  userId: string;
+  userName: string;
   password: string;
 }
 
 export interface SignUpInfo {
   name: string;
-  userId: string;
+  userName: string;
   password: string;
 }

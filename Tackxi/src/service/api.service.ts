@@ -61,9 +61,9 @@ export const put = async (
     configs.timeout = timeout;
   }
 
-  const response: ApiResponse = await api.put(url, data, configs);
+  const res: ApiResponse = await api.put(url, data, configs);
 
-  return response;
+  return res;
 };
 
 export const deleteMethod = async (
@@ -78,9 +78,9 @@ export const deleteMethod = async (
     configs.timeout = timeout;
   }
 
-  const response: ApiResponse = await api.delete(url, configs);
+  const res: ApiResponse = await api.delete(url, configs);
 
-  return response;
+  return res;
 };
 
 export function serialize(obj: any) {
