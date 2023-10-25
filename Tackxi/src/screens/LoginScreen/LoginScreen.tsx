@@ -30,9 +30,10 @@ const LoginScreen: React.FC = () => {
       const token = await AuthService.signIn(userInfo);
       await TokenService.setTokens(token);
       const user = await AuthService.getUser();
+
       setUser(user);
 
-      appNavigation.navigate('routeStack');
+      appNavigation.navigate('transportationStack');
     } catch (error) {
       await TokenService.removeToken();
       deleteUser();

@@ -1,14 +1,25 @@
 import React from 'react';
-import {BaseView, IconContainer} from '../../components';
-import {Text, View} from 'react-native';
+import {BaseView} from '../../components';
+import {Button, TouchableOpacity, View} from 'react-native';
 import {styled} from './style';
 import {TransportationStore} from '../../stores';
 import {Transportation} from '../../interface';
 import 'react-native-get-random-values';
 import {v4 as uuid} from 'uuid';
-import {nanoid} from 'nanoid';
+import {
+  IconBike,
+  IconBus,
+  IconCar,
+  IconScooter,
+} from 'tabler-icons-react-native';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {AppStackParamList} from '../../navigator/AppStack';
 
 const TransportationScreen = () => {
+  const appNavigation =
+    useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+
   const {transportationList, addTransportation, deleteTransportation} =
     TransportationStore();
 
@@ -29,51 +40,43 @@ const TransportationScreen = () => {
     addTransportation(clickedTransportation);
   };
 
+  const handleNavigate = () => {
+    appNavigation.navigate('suggestionStack');
+  };
+
   return (
     <BaseView style={styled.container}>
       <View style={styled.icon}>
         <View style={styled.iconWrap}>
-          <IconContainer
-            name="right"
-            size={100}
-            style={styled.iconStyle}
+          <TouchableOpacity
             onPress={() => {
-              handleIconClick('right');
-            }}
-          />
-          <IconContainer
-            name="down"
-            size={100}
-            style={styled.iconStyle}
+              handleIconClick('bus');
+            }}>
+            <IconBus size={100} style={styled.iconStyle} />
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={() => {
-              handleIconClick('down');
-            }}
-          />
+              handleIconClick('taxi');
+            }}>
+            <IconCar size={100} style={styled.iconStyle} />
+          </TouchableOpacity>
         </View>
         <View style={styled.iconWrap}>
-          <IconContainer
-            name="up"
-            size={100}
-            style={styled.iconStyle}
+          <TouchableOpacity
             onPress={() => {
-              handleIconClick('up');
-            }}
-          />
-          <IconContainer
-            name="left"
-            size={100}
-            style={styled.iconStyle}
+              handleIconClick('bike');
+            }}>
+            <IconBike size={100} style={styled.iconStyle} />
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={() => {
-              handleIconClick('left');
-            }}
-          />
+              handleIconClick('scooter');
+            }}>
+            <IconScooter size={100} style={styled.iconStyle} />
+          </TouchableOpacity>
         </View>
       </View>
-      {transportationList.map(transportation => (
-        <View>
-          <Text key={nanoid()}>{transportation.name}</Text>
-        </View>
-      ))}
+      <Button title="경로 보기" onPress={handleNavigate} />
     </BaseView>
   );
 };
