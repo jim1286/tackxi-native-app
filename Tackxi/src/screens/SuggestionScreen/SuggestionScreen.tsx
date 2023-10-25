@@ -5,7 +5,7 @@ import {ScrollView} from 'react-native';
 import {mock} from './mock';
 import {HeaderComponent, RouteComponent} from './components';
 
-const RouteScreen: React.FC = () => {
+const SuggestionScreen: React.FC = () => {
   return (
     <BaseView>
       <HeaderComponent />
@@ -18,4 +18,4 @@ const RouteScreen: React.FC = () => {
   );
 };
 
-export default RouteScreen;
+export default SuggestionScreen;

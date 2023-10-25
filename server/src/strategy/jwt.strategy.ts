@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { ExtractJwt, Strategy } from 'passport-jwt';
+import { ExtractJwt, Strategy, VerifiedCallback } from 'passport-jwt';
 import * as config from 'config';
 import { User } from '@/entity';
 import { AuthService } from '@/module/auth/auth.service';
@@ -13,18 +13,22 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(private readonly authService: AuthService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: jwtConfig.accessSecret,
+      ignoreExpiration: true,
+      secretOrKey: process.env.JWT_SECRET || jwtConfig.accessSecret,
     });
   }
 
-  async validate(payload: TokenPayload) {
+  async validate(payload: TokenPayload, done: VerifiedCallback): Promise<any> {
     const { userName } = payload;
     const user: User = await this.authService.findOneByUserName(userName);
 
     if (!user) {
-      throw new UnauthorizedException({ message: 'user does not exist' });
+      return done(
+        new UnauthorizedException({ message: 'user does not exist' }),
+        false,
+      );
     }
 
-    return user;
+    return done(null, user);
   }
 }
