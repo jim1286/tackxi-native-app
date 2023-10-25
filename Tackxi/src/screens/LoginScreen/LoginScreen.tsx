@@ -29,8 +29,8 @@ const LoginScreen: React.FC = () => {
     try {
       const token = await AuthService.signIn(userInfo);
       await TokenService.setTokens(token);
-      // const user = await AuthService.getUser();
-      // setUser(user);
+      const user = await AuthService.getUser();
+      setUser(user);
 
       appNavigation.navigate('routeStack');
     } catch (error) {

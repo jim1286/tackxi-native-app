@@ -5,9 +5,6 @@ export interface GetUser {
 }
 
 export interface SignIn {
-  userId: string;
-  name: string;
-  userName: string;
   accessToken: string;
   refreshToken: string;
 }

@@ -11,14 +11,14 @@ import { JwtStrategy } from '@/strategy';
 const jwtConfig = config.get('jwt');
 @Module({
   imports: [
-    PassportModule.register({ defaultStrategy: 'jwt' }),
+    TypeOrmModule.forFeature([User]),
     JwtModule.register({
       secret: process.env.JWT_SECRET || jwtConfig.accessSecret,
       signOptions: {
         expiresIn: jwtConfig.accessExpiresIn,
       },
     }),
-    TypeOrmModule.forFeature([User]),
+    PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
