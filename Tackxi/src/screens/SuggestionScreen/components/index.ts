@@ -1,2 +1,2 @@
-export * from './RouteComponent';
+export * from './Suggestion';
 export * from './HeaderComponent';

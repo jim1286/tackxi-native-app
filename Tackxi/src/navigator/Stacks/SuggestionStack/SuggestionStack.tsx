@@ -4,12 +4,12 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
-import {SuggestionScreen} from '../../../screens';
+import {MapScreen, SuggestionScreen} from '../../../screens';
 
 const {Screen, Navigator} =
   createNativeStackNavigator<SuggestionStackParamList>();
 
-export type SuggestionStackParamList = {suggestion: undefined};
+export type SuggestionStackParamList = {suggestion: undefined; map: undefined};
 
 export type SuggestionStackNavigationProp<
   RouteName extends keyof SuggestionStackParamList,
@@ -32,6 +32,7 @@ const SuggestionStack: React.FC = () => {
       initialRouteName="suggestion"
       screenOptions={{headerShown: false}}>
       <Screen name="suggestion" component={SuggestionScreen} />
+      <Screen name="map" component={MapScreen} />
     </Navigator>
   );
 };

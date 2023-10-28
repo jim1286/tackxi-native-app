@@ -5,11 +5,11 @@ import {DetailStep, SimpleStep} from './components';
 import {Info} from '../../../../interface/route.interface';
 import {TimeUtil} from '../../../../utils';
 
-interface RouteComponentProps {
+interface SuggestionProps {
   info: Info;
 }
 
-const RouteComponent: React.FC<RouteComponentProps> = ({info}) => {
+const Suggestion: React.FC<SuggestionProps> = ({info}) => {
   return (
     <View style={styled.container}>
       <View style={styled.body}>
@@ -60,4 +60,4 @@ const RouteComponent: React.FC<RouteComponentProps> = ({info}) => {
   );
 };
 
-export default RouteComponent;
+export default Suggestion;
