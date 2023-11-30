@@ -73,7 +73,6 @@ export class AuthService {
     const refreshToken = await this.getRefreshToken(payload);
 
     const response = {
-      ...payload,
       accessToken,
       refreshToken,
     };

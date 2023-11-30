@@ -69,5 +69,7 @@
 		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
+	<key>NMFClientId</key>
+	<string>m1vrewszv9</string>
 </dict>
 </plist>

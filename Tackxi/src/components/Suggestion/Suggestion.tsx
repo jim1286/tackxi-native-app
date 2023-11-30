@@ -2,14 +2,14 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {styled} from './styles';
 import {DetailStep, SimpleStep} from './components';
-import {Info} from '../../../../interface/route.interface';
-import {TimeUtil} from '../../../../utils';
+import {Info} from '../../interface/route.interface';
+import {TimeUtil} from '../../utils';
 
-interface RouteComponentProps {
+interface SuggestionProps {
   info: Info;
 }
 
-const RouteComponent: React.FC<RouteComponentProps> = ({info}) => {
+const Suggestion: React.FC<SuggestionProps> = ({info}) => {
   return (
     <View style={styled.container}>
       <View style={styled.body}>
@@ -17,11 +17,11 @@ const RouteComponent: React.FC<RouteComponentProps> = ({info}) => {
           <View style={styled.infoWrap}>
             <View style={styled.saveInfo}>
               <Text style={{fontSize: 12, color: 'red'}}>
-                택시비 {info.summary.savedMoney}원 절약하고
+                택시비 {info.summary.savedMoney}원을 절약하고
               </Text>
               <Text style={{fontSize: 12, color: 'red'}}>
-                소요 시간 {TimeUtil.setSecondToMinute(info.summary.savedTime)}분
-                절약했어요!
+                소요 시간 {TimeUtil.setSecondToMinute(info.summary.savedTime)}
+                분을 절약했어요!
               </Text>
             </View>
             <View style={styled.routeInfo}>
@@ -60,4 +60,4 @@ const RouteComponent: React.FC<RouteComponentProps> = ({info}) => {
   );
 };
 
-export default RouteComponent;
+export default Suggestion;
