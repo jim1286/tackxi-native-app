@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {BaseView, IconContainer} from '../../components';
 import {TextInput, View} from 'react-native';
 import {styled} from './styles';
 import {SignInInfo} from '../../interface';
 import {AuthService, TokenService} from '../../service';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {AppStackParamList} from '../../navigator/AppStack';
-import {AuthStackParamList} from '../../navigator/Stacks/AuthStack/AuthStack';
-import UserStore from '../../stores/UserStore/UserStore';
+import {UserStore} from '../../stores';
+import {AppStackParamList} from '../../navigator';
+import {AuthStackParamList} from '../../navigator/Stacks/AuthStack';
+import BaseView from '../../components/BaseView';
+import IconContainer from '../../components/IconContainer';
 
 const LoginScreen: React.FC = () => {
   const {setUser, deleteUser} = UserStore();

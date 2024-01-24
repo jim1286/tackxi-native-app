@@ -4,7 +4,8 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
-import {LoginScreen, SignUpScreen} from '../../../screens';
+import LoginScreen from '../../../screens/LoginScreen';
+import SignUpScreen from '../../../screens/SignUpScreen';
 
 const {Screen, Navigator} = createNativeStackNavigator<AuthStackParamList>();
 

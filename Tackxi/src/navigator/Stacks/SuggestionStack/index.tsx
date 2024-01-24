@@ -4,7 +4,8 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
-import {MapScreen, SuggestionScreen} from '../../../screens';
+import SuggestionScreen from '../../../screens/SuggestionScreen';
+import MapScreen from '../../../screens/MapScreen';
 
 const {Screen, Navigator} =
   createNativeStackNavigator<SuggestionStackParamList>();

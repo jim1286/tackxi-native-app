@@ -4,10 +4,9 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
-import {AuthStack, TransportationStack, SuggestionStack} from './Stacks';
-import {TokenService} from '../service';
-import UserStore from '../stores/UserStore/UserStore';
-import {User} from '../interface';
+import AuthStack from './Stacks/AuthStack';
+import TransportationStack from './Stacks/TransportationStack';
+import SuggestionStack from './Stacks/SuggestionStack';
 
 const {Screen, Navigator} = createNativeStackNavigator<AppStackParamList>();
 
