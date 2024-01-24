@@ -1,9 +1,10 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {styled} from './styles';
-import {DetailStep, SimpleStep} from './components';
 import {Info} from '../../interface/route.interface';
 import {TimeUtil} from '../../utils';
+import SimpleStep from './components/SimpleStep';
+import DetailStep from './components/DetailStep';
 
 interface SuggestionProps {
   info: Info;

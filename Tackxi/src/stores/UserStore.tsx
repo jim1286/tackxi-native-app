@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import {User} from '../../interface';
+import {User} from '../interface';
 
 interface UserStoreState {
   user: User | null;

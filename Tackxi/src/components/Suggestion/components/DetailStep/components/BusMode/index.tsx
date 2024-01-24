@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {styled} from './styles';
 import {ModeEnum} from '../../../../../../enums';
-import {IconLabel} from '../../../../../IconLabel';
+import IconLabel from '../../../../../IconLabel';
 
 interface BusModeProps {
   station: string;

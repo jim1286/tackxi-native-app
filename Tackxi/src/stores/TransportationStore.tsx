@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import {Transportation} from '../../interface';
+import {Transportation} from '../interface';
 
 interface TransportationStoreState {
   transportationList: Transportation[];

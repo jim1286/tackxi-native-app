@@ -1,7 +1,9 @@
 import React, {useMemo} from 'react';
-import {BusMode, TaxiMode, WalkMode} from './components';
 import {Step} from '../../../../interface/route.interface';
 import {ModeEnum} from '../../../../enums';
+import BusMode from './components/BusMode';
+import TaxiMode from './components/TaxiMode';
+import WalkMode from './components/WalkMode';
 
 interface SimpleStepProps {
   step: Step;
