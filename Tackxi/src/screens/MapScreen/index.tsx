@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react';
 import NaverMapView from 'react-native-nmap';
 import {styled} from './styles';
 import {Animated, TouchableOpacity, View} from 'react-native';
-import {Suggestion} from '../../components';
 import {mock} from './mock';
 import {SuggestionStore} from '../../stores';
 import {IconChevronDown, IconChevronUp, IconX} from 'tabler-icons-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {SuggestionStackParamList} from '../../navigator/Stacks/SuggestionStack/SuggestionStack';
+import {SuggestionStackParamList} from '../../navigator/Stacks/SuggestionStack';
+import Suggestion from '../../components/Suggestion';
 
 interface MapScreenProps {}
 

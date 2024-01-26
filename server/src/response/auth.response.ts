@@ -1,10 +1,9 @@
+import { JwtToken } from '@/interface';
+
 export interface GetUser {
   userId: string;
   name: string;
   userName: string;
 }
 
-export interface SignIn {
-  accessToken: string;
-  refreshToken: string;
-}
+export interface SignIn extends JwtToken {}

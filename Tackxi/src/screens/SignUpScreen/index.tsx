@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import {BaseView, IconContainer} from '../../components';
 import {TextInput, View} from 'react-native';
 import {styled} from './styles';
 import {SignUpInfo} from '../../interface';
 import {AuthService} from '../../service';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {AuthStackParamList} from '../../navigator/Stacks/AuthStack/AuthStack';
+import {AuthStackParamList} from '../../navigator/Stacks/AuthStack';
+import BaseView from '../../components/BaseView';
+import IconContainer from '../../components/IconContainer';
 
 const SignUpScreen: React.FC = () => {
   const authNavigation =

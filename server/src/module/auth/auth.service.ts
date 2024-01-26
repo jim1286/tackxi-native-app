@@ -14,7 +14,7 @@ import { AuthResponse } from '@/response';
 import { v4 as uuid } from 'uuid';
 import * as bcrypt from 'bcrypt';
 import * as config from 'config';
-import { TokenPayload } from '@/interface';
+import { JwtToken, TokenPayload } from '@/interface';
 
 const jwtConfig = config.get('jwt');
 
@@ -72,7 +72,7 @@ export class AuthService {
     const accessToken = await this.getAccessToken(payload);
     const refreshToken = await this.getRefreshToken(payload);
 
-    const response = {
+    const response: JwtToken = {
       accessToken,
       refreshToken,
     };
@@ -83,7 +83,7 @@ export class AuthService {
   async getUser(params: User): Promise<AuthResponse.GetUser> {
     const user = await this.findOneByUserName(params.userName);
 
-    const res = {
+    const res: AuthResponse.GetUser = {
       userId: user.userId,
       name: user.name,
       userName: user.userName,

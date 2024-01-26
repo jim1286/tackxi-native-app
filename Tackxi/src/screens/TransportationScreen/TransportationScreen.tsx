@@ -1,5 +1,5 @@
 import React from 'react';
-import {BaseView} from '../../components';
+
 import {Button, TouchableOpacity, View} from 'react-native';
 import {styled} from './style';
 import {TransportationStore} from '../../stores';
@@ -14,7 +14,8 @@ import {
 } from 'tabler-icons-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {AppStackParamList} from '../../navigator/AppStack';
+import {AppStackParamList} from '../../navigator';
+import BaseView from '../../components/BaseView';
 
 const TransportationScreen = () => {
   const appNavigation =

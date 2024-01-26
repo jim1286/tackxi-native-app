@@ -3,3 +3,8 @@ export interface TokenPayload {
   name: string;
   userName: string;
 }
+
+export interface JwtToken {
+  accessToken: string;
+  refreshToken: string;
+}
