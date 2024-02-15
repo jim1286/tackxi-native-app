@@ -8,8 +8,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {SuggestionStore} from '../../stores';
 import HeaderComponent from './components/HeaderComponent';
 import BaseView from '../../components/BaseView';
-import Suggestion from './components/Suggestion';
 import {SuggestionStackParamList} from '../../navigator/Stacks/SuggestionStack';
+import Suggestion from '../../components/Suggestion';
 
 const SuggestionScreen: React.FC = () => {
   const suggestionNavigation =

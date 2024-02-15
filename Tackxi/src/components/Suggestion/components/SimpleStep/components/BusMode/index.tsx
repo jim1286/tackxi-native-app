@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import {styled} from './styles';
 import {ModeEnum} from '../../../../../../enums';
 import {TimeUtil} from '../../../../../../utils';
-import {IconLabel} from '../../../../../IconLabel';
+import IconLabel from '../../../../../IconLabel';
 
 interface BusModeProps {
   percent: number;

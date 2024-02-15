@@ -8,7 +8,7 @@ import {
 } from '../interface';
 import {ApiService} from '.';
 
-const AUTH_BASE_URI = `/auth`;
+const AUTH_BASE_URI = '/auth';
 
 export const signIn = async (
   params: SignInRequest,

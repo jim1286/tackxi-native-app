@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import {styled} from './styles';
 import {ModeEnum} from '../../enums';
@@ -18,7 +18,7 @@ const IconLabel: React.FC<IconLabelProps> = ({
   iconColor,
   labelColor,
 }) => {
-  const icon = useMemo(() => {
+  const icon = (() => {
     switch (iconType) {
       case ModeEnum.BUS: {
         return <Bus />;
@@ -33,7 +33,7 @@ const IconLabel: React.FC<IconLabelProps> = ({
         return <Location />;
       }
     }
-  }, [iconType]);
+  })();
 
   return (
     <View style={styled(labelColor).label}>

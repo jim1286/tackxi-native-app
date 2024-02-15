@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import {styled} from './styles';
 import {IconMapPinFilled} from 'tabler-icons-react-native';
 import {ModeEnum} from '../../../../../../enums';
-import {IconLabel} from '../../../../../IconLabel';
+import IconLabel from '../../../../../IconLabel';
 
 interface WalkModeProps {
   station: string;
