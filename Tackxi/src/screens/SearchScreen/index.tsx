@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {styled} from './style';
-import {View, TextInput} from 'react-native';
+import {View, TextInput, TouchableHighlight} from 'react-native';
 import BaseView from '../../components/BaseView';
 import IconContainer from '../../components/IconContainer';
 import 'react-native-get-random-values';
@@ -36,7 +36,7 @@ const SearchScreen = () => {
 
   const searchGeoCode = async (search: string) => {
     const params: GetSearchLocationRequest = {
-      query: search,
+      query: '강남역',
       display: 5,
     };
 
@@ -77,7 +77,13 @@ const SearchScreen = () => {
       </View>
       <View style={styled.listContainer}>
         {searchedItems.map(searchedItem => (
-          <SearchComponent key={searchedItem.mapx} item={searchedItem} />
+          <TouchableHighlight
+            key={searchedItem.mapx}
+            activeOpacity={0.6}
+            underlayColor="#DDDDDD"
+            onPress={() => alert(searchedItem.address)}>
+            <SearchComponent item={searchedItem} />
+          </TouchableHighlight>
         ))}
       </View>
     </BaseView>
