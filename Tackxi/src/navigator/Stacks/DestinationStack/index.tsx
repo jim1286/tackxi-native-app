@@ -32,9 +32,7 @@ export type DestinationStackSuggestions = {
 
 const DestinationStack: React.FC = () => {
   return (
-    <Navigator
-      initialRouteName="destination"
-      screenOptions={{headerShown: false}}>
+    <Navigator initialRouteName="search" screenOptions={{headerShown: false}}>
       <Screen name="destination" component={DestinationScreen} />
       <Screen name="search" component={SearchScreen} />
     </Navigator>

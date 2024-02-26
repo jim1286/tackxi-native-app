@@ -9,6 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {SuggestionStackParamList} from '../../navigator/Stacks/SuggestionStack';
 import Suggestion from '../../components/Suggestion';
+import {useAppSelector} from '../../redux/hook';
 
 interface MapScreenProps {}
 
@@ -20,12 +21,17 @@ export interface LatLongType {
 const MapScreen: React.FC<MapScreenProps> = () => {
   const suggestionNavigation =
     useNavigation<NativeStackNavigationProp<SuggestionStackParamList>>();
+  const currentLocation = useAppSelector(
+    state => state.mapSlice.currentLocation,
+  );
   const {infoId} = SuggestionStore();
   const [isOpen, setIsOpen] = useState(false);
-  const [centerPoint, setCenterPoint] = useState<LatLongType>({
-    latitude: 37.564362,
-    longitude: 126.977011,
-  });
+  const [centerPoint, setCenterPoint] = useState<LatLongType>(
+    currentLocation ?? {
+      latitude: 37.564362,
+      longitude: 126.977011,
+    },
+  );
 
   useEffect(() => {
     return () => {

@@ -5,6 +5,7 @@ export const styled = StyleSheet.create({
     flex: 1,
     display: 'flex',
     alignItems: 'center',
+    gap: 15,
   },
   inputBox: {
     gap: 7,
@@ -27,5 +28,11 @@ export const styled = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  listContainer: {
+    width: '90%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 5,
   },
 });

@@ -1,3 +1,26 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "strict": true,
+    "baseUrl": ".",
+    "types": ["pinia-plugin-persistedstate"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "svg.d.ts", "types/styled.d.ts"],
+  "references": [{"path": "./tsconfig.node.json"}]
 }

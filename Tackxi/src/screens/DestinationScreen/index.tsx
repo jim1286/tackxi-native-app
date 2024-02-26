@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {styled} from './style';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -6,16 +6,17 @@ import BaseView from '../../components/BaseView';
 import {TextInput, View} from 'react-native';
 import IconContainer from '../../components/IconContainer';
 import {DestinationStackParamList} from '../../navigator/Stacks/DestinationStack';
-import 'react-native-get-random-values';
 import {useRequestPermission} from '../../hooks';
-import Geolocation, {GeoCoordinates} from 'react-native-geolocation-service';
+import {useAppDispatch} from '../../redux/hook';
+import {setCurrentLocation} from '../../redux/features';
+import {Location} from '../../interface/map.interface';
+import 'react-native-get-random-values';
+import Geolocation from 'react-native-geolocation-service';
 
 const DestinationScreen = () => {
+  const dispatch = useAppDispatch();
   const destinationNavigation =
     useNavigation<NativeStackNavigationProp<DestinationStackParamList>>();
-  const [location, setLocation] = useState<GeoCoordinates | undefined>(
-    undefined,
-  );
   const requestPermission = useRequestPermission();
 
   useEffect(() => {
@@ -31,7 +32,13 @@ const DestinationScreen = () => {
 
     Geolocation.getCurrentPosition(
       pos => {
-        setLocation(pos.coords);
+        console.log(pos);
+        const newCurrentLocation: Location = {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude,
+        };
+
+        dispatch(setCurrentLocation(newCurrentLocation));
       },
       error => {
         console.log(error);
@@ -43,8 +50,6 @@ const DestinationScreen = () => {
       },
     );
   };
-
-  console.log(location);
 
   const handleNavigate = () => {
     destinationNavigation.navigate('search');
