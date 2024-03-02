@@ -6,11 +6,11 @@ import IconContainer from '../../components/IconContainer';
 import 'react-native-get-random-values';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {DestinationStackParamList} from '../../navigator/Stacks/DestinationStack';
 import {AppStackParamList} from '../../navigator';
 import {NaverMapService} from '../../service';
-import {GetSearchLocationRequest, Item} from '@/interface';
+import {GetSearchLocationRequest, Item} from '../../interface';
 import SearchComponent from './components/SearchComponent';
+import {DestinationStackParamList} from '../../navigator/Stacks/DestinationStack';
 
 const SearchScreen = () => {
   const destinationNavigation =

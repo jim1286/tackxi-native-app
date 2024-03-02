@@ -6,14 +6,14 @@ import {
   SignUpRequest,
   SignUpResponse,
 } from '../interface';
-import {ApiService} from '.';
+import customAxios from './api.service';
 
 const AUTH_BASE_URI = '/auth';
 
 export const signIn = async (
   params: SignInRequest,
 ): Promise<SignInResponse> => {
-  const res: ApiResponse = await ApiService.post(
+  const res: ApiResponse = await customAxios.post(
     `${AUTH_BASE_URI}/signin`,
     params,
   );
@@ -24,7 +24,7 @@ export const signIn = async (
 export const signUp = async (
   params: SignUpRequest,
 ): Promise<SignUpResponse> => {
-  const res: ApiResponse = await ApiService.post(
+  const res: ApiResponse = await customAxios.post(
     `${AUTH_BASE_URI}/signup`,
     params,
   );
@@ -33,7 +33,7 @@ export const signUp = async (
 };
 
 export const getUser = async (): Promise<GetUserResponse> => {
-  const res: ApiResponse = await ApiService.get(`${AUTH_BASE_URI}/user`);
+  const res: ApiResponse = await customAxios.get(`${AUTH_BASE_URI}/user`);
 
   return res.data;
 };
